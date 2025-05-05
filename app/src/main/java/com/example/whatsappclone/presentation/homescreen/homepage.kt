@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -26,10 +28,78 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.whatsappclone.R
+import com.example.whatsappclone.presentation.bottomnavigatiion.bottom_navigation
 
 @Composable
 @Preview (showSystemUi = true)
 fun homepage(){
+
+    val chatData = listOf(ChatListModel(
+        R.drawable.salmankhan,
+        name = "Salman khan" ,
+        time = "10:00 AM" ,
+        message = "Hello"),
+
+        ChatListModel(
+            R.drawable.sharukhkhan ,
+            name = "Sharukh Khan" ,
+            time = "9:00 AM",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.sharadhakapoor ,
+            name = "Sharadha Kapoor" ,
+            time = "9:00 PM",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.bhuvan_bam ,
+            name = "Bhuvan Bam" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.rashmika ,
+            name = "Rashmika" ,
+            time = "02/03/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.rajkummar_rao ,
+            name = "Rajkumar Rao" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.boy ,
+            name = "Ashish" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.boy1 ,
+            name = "Himanshu" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.boy3 ,
+            name = "Ashish Bhati" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.ajay_devgn ,
+            name = "Ajay Devgn" ,
+            time = "02/02/2023",
+            message = "Hii"),
+
+        ChatListModel(
+            R.drawable.akshay_kumar ,
+            name = "Akshay Kumar" ,
+            time = "02/02/2023",
+            message = "Hii"),
+        )
 
     Scaffold(
         floatingActionButton = {
@@ -42,6 +112,8 @@ fun homepage(){
                    contentDescription = null ,
                    modifier = Modifier.size(28.dp))
             }
+        }, bottomBar = {
+            bottom_navigation()
         }
     ){
 
@@ -84,6 +156,12 @@ fun homepage(){
             }
 
             HorizontalDivider()
+
+            LazyColumn {
+                items(chatData) {
+                    ChatDesign(chatListModel = it)
+                }
+            }
         }
 
 
